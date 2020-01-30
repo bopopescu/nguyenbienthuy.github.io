@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Title Page-->
+    <title>Nhập thông tin công ty</title>
+    <!--Logo pages-->
+
+    <!--JS-->
+    <script src="/static/js/jquery.3.3.1.min.js"></script>
+    <script src="/static/js/header_bar.js"></script>
+
+    <script src="/static/multi-column/jquery.inputpicker.js"></script>
+    <script src="/static/js/company/company.js"></script>
+
+    <!--<script src="/static/multi-column/jquery.3.2.1.min.js"></script>-->
+    <!-- Fontfaces CSS-->
+    {% load staticfiles %}
+   
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'multi-column/jquery.inputpicker.css' %}" rel="stylesheet">
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/default.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!--Thêm header_bar chung cho trang-->
+        {% include "header_bar.html" %}
+        <!--Nội dung trang-->
+        <div class="page-content--bgf7">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <strong>Công ty&nbsp;</strong> Sửa thông tin
+                                    </div>
+                                </div>
+                                <div class="card-header">
+                                    <button type="submit" class="btn btn-primary btn-sm btn__sm__w80" id="save" name="save">
+                                        <i class="fa fa-dot-circle-o"></i> Lưu
+                                    </button>
+                                    <!--Save thử để kiểm tra lỗi nhập liệu-->
+                                    <button class="btn btn-sm btn-primary btn__sm__w80" type="submit" id="test_save" name="test_save">
+                                        <i class="fa fa-question"></i> Thử
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm btn__sm__w80" id="reset" onclick="resetAddCompany()">
+                                        <i class="fa fa-ban"></i> Xóa
+                                    </button>
+                                    <script>
+                                        function resetAddCompany() {
+                                            document.getElementById("add_company").reset();
+                                        }
+                                    </script>
+                                </div>
+                                <!--Nếu có lỗi nhập liệu thì báo đường dẫn lỗi -->
+                                {% if error_message %}
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col col-sm-8">
+                                                <p style="color:#ff0000">{{ error_message | safe }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="card-body card-block">
+                                    <form action="{% url 'edit_company' %}" method="post" enctype="multipart/form-data"
+                                          class="form-horizontal" id="add_company">
+                                        <!--Không sử dụng mã company_id -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="company_id" class="pr-1 form-control-sm">Mã công ty</label>
+                                            </div>
+                                            <div class="col-6 col-sm-2">
+                                                <input class="input-sm form-control-sm form-control company_id"
+                                                       id="company_id" type="text" name="company_id"
+                                                       placeholder="Mã công ty [chiều dài 4]" value="{{ company_id }}"
+                                                       pattern="[1-9]+[0-9]{3,3}" maxlength="4" readonly>
+                                            </div>
+
+                                            <!--
+                                            <div class="col col-sm-2">
+                                                <div class="form-check">
+                                                    <div class="checkbox">
+                                                        <label for="auto_company_id" class="form-check-label ">
+                                                            <input type="checkbox" id="auto_company_id"
+                                                                   name="auto_company_id" tabindex="-1" value="True"
+                                                                   class="form-check-input" checked>Tự động
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="company_name" class="form-control-sm">Tên công ty</label>
+                                            </div>
+                                            <div class="col-6 col-sm-4">
+                                                <input class="input-sm form-control-sm form-control company_name"
+                                                       id="company_name" type="text" name="company_name"
+                                                       placeholder="Tên công ty công ty" value="{{ company_name }}"
+                                                       required {{ readonly }}>
+                                                <small class="form-text text-muted" hidden>This is a help text</small>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="company_short_name" class="form-control-sm">Tên viết tắt</label>
+                                            </div>
+                                            <div class="col-6 col-sm-2">
+                                                <input type="text" id="company_short_name" placeholder="GPM Việt Nam"
+                                                       class="input-sm form-control-sm form-control company_short_name"
+                                                       name="company_short_name"
+                                                       value="{{company_short_name}}" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="certificate_id" class="form-control-sm">ID giấy chứng nhận</label>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input class="input-sm form-control-sm form-control certificate_id"
+                                                           name="certificate_id" readonly type="text" id="certificate_id"
+                                                           placeholder="Mã giấy ĐKKD" value="{{certificate_id}}">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="certificate_code" class="form-control-sm">Mã số doanh nghiệp</label>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input class="input-sm form-control-sm form-control certificate_code"
+                                                           name="certificate_code" {{ readonly }}
+                                                           type="text" id="certificate_code" placeholder="Mã giấy ĐKKD"
+                                                           value="{{certificate_code}}">
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="code_tax" class="form-control-sm">Mã số thuế</label>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input type="text" id="code_tax" placeholder="Mã số thuế" class="input-sm form-control-sm form-control code_tax"
+                                                                value="{{code_tax}}" name="code_tax" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="cert_day" class="form-control-sm">Ngày cấp ĐKKD</label>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input type="date" id="cert_day" class="input-sm form-control-sm form-control cert_day" name="cert_day"
+                                                               value="{{cert_day | date:"Y-m-d"}}" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="cert_place" class="form-control-sm">Nơi cấp ĐKKD</label>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <input type="text" id="cert_place" placeholder="Nơi cấp ĐKKD" class="input-sm form-control-sm form-control cert_place"
+                                                                value="{{cert_place}}" name="cert_place" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="company_phone" class="form-control-sm">Số điện thoại</label>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input type="text" id="company_phone" placeholder="Số điện thoại" class="input-sm form-control-sm form-control company_phone"
+                                                                value="{{company_phone}}" name="company_phone" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="company_fax" class="form-control-sm">Số FAX</label>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input type="text" id="company_fax" placeholder="Số FAX" class="input-sm form-control-sm form-control company_fax"
+                                                                value="{{company_fax}}" name="company_fax" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="company_email" class="form-control-sm">Email</label>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input type="email" id="company_email" placeholder="Email"
+                                                           class="input-sm form-control-sm form-control company_email"
+                                                           value="{{company_email}}" name="company_email" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="company_address" class="form-control-sm">Địa chỉ</label>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <input type="text" id="company_address" placeholder="Địa chỉ"
+                                                           class="input-sm form-control-sm form-control address"
+                                                           value="{{company_address}}" name="company_address" {{ readonly }}>
+                                                    <small class="form-text text-muted" hidden>This is a help text</small>
+                                                </div>
+                                            </div>
+                                            <!--Input text ẩn = 'save' thì #save click, = 'try' thì #test_save click kiểm tra trong view.py-->
+                                            <label for="flag_test" hidden></label>
+                                            <input type="text" id="flag_test" name="flag_test" value="save" hidden>
+
+                                            <!--Input text ẩn = 'text_unchanged' thì input không thay đổi
+                                            = 'text_changed' thì input có thay đổi để kiểm tra trong view.py-->
+                                            <label for="text_changed" hidden></label>
+                                            <input type="text" id="text_changed" name="text_changed" hidden>
+
+                                            <!--<input class="input-sm form-control-sm form-control  demo" id="demo" name="demo" hidden>-->
+                                        <script>
+                                            //let s = document.getElementsByName("complist").value;
+                                            //alert('sdfkjshdfkj');
+                                            /*$('#demo').inputpicker({
+                                                url: '/static/multi-column/example-regions.json',
+                                                fields: ['id', 'name'],
+                                                fieldText: 'name',
+                                                fieldValue: 'id',
+                                                headShow: true,
+                                                filterOpen: true,
+                                                autoOpen: true,
+                                                width: "100%"
+                                            });*/
+                                            /*let s = document.getElementById('complist').value;
+                                            alert(s);
+                                            $('#demo').inputpicker({
+                                                'data': [
+            {company_id:"1",company_name:"jQuery", company_short_name: "This is the description of the text 1."},
+            {company_id:"2",company_name:"Script", company_short_name: "This is the description of the text 2."},
+            {company_id:"3",company_name:"Net", company_short_name: "This is the description of the text 3."},
+            {company_id: "1000", company_name: 'Công ty TNHH MTV GPM Việt Nam', company_short_name: 'GPM Việt Nam'},
+            {company_id: '1001', company_name: 'Ngân hàng TMCP Quốc Dân chi nhánh An Giang', company_short_name: 'NCB An Giang'}],
+                                                fields:[
+                                                    {name:'company_id',text:'company_id'},
+                                                    {name:'company_name',text:'company_name'},
+                                                    {name:'company_short_name',text:'company_short_name'}],
+                                                headShow: true,
+                                                fieldText : 'company_id',
+                                                fieldValue: 'company_id',
+                                                filterOpen: true,
+                                                autoOpen: true,
+                                                width: "100%"
+                                            })*/
+                                            //let s = document.getElementById('demo').value;
+                                            let obj = JSON.parse('{{ data | safe}}');
+                                            //alert(obj);
+                                            //console.log(obj);
+
+                                            $('#demo').inputpicker({
+                                                data: obj,
+                                                fields: [
+                                                    {name: 'company_id', text: 'company_id'},
+                                                    {name: 'company_name', text: 'company_name'},
+                                                    {name: 'company_short_name', text: 'company_short_name'},
+                                                    {name: 'cert_day', text: 'cert_day'}],
+                                                headShow: true,
+                                                fieldText: 'company_id',
+                                                fieldValue: 'company_id',
+                                                filterOpen: true,
+                                                autoOpen: true,
+                                                width: "100%"
+                                            });
+                                            </script>
+                                            {% csrf_token %}
+                                        </form>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row" hidden>
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2019 GPM Việt Nam. All rights reserved <a href="https://gpm.vn">GPM</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <!-- Jquery JS-->
+    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/vendor/slick/slick.min.js"></script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js"></script>
+    <!-- Main JS-->
+    <script src="/static/js/main.js"></script>
+
+
+</body>
+
+</html>
+<!-- end document-->

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tiền ăn</title>
+</head>
+<body>
+    {% include "hrms/../menu_bar.html" %}
+    <h3>Thêm mới tiền ăn trưa</h3>
+    <form method="post" action="/hrms/do_employee_meal_money/">
+        {% if error_message %}
+        <p style="color:red">{{ error_message }}</p><br/>
+        {% endif %}
+        <table border="0">
+            <tr>
+                <td>Mã tiền ăn</td>
+                <td><input name="meal_money_code" id="meal_money_code" type="number" pattern="[0-9]{1,}"></td>
+            </tr>
+            <tr>
+                <td>Số tiền</td>
+                <td><input name="meal_money_amount" id="meal_money_amount" type="text" 
+                            pattern="[0-9]{1,}" placeholder="Số tiền"></td>
+            </tr>
+            <tr>
+                <td>Loại tiền</td>
+                <td>
+                <select name="currency" id="currency">
+                    <option value="Đồng">Đồng</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Từ ngày</td>
+                <td><input name="startday" id="startday" type="date"></td>
+            </tr>
+            <tr>
+                <td>Đến ngày</td>
+                <td><input name="endday" id="endday" type="date"></td>
+            </tr>
+        </table>
+        <button type="submit">Lưu</button>
+        <!-- this template tag will avoid 'CSRF verification failed. Request aborted' error. -->
+        {% csrf_token %}
+    </form>
+</body>

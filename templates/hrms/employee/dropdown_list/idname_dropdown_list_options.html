@@ -1,0 +1,8 @@
+<option value="">Chọn...</option>
+{% for i in idnames %}
+    {% if i.id_name_code == selected_idname %}
+        <option value="{{ i.id_name_code }}" selected>{{ i.name_of_identification }}</option>
+    {% else %}
+        <option value="{{ i.id_name_code }}">{{ i.name_of_identification }}</option>
+    {% endif %}
+{% endfor %}

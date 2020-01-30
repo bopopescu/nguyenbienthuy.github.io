@@ -1,0 +1,8 @@
+<option value="">Chọn nơi cấp...</option>
+{% for poi in idplaces %}
+    {% if poi.place_id == selected_idplace %}
+        <option value="{{ poi.place_id }}" selected>{{ poi.place_of_identification }}</option>
+    {% else %}
+        <option value="{{ poi.place_id }}">{{ poi.place_of_identification }}</option>
+    {% endif %}
+{% endfor %}

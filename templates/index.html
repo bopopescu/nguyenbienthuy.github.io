@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <!--Logo pages-->
+
+
+    <script src="/static/js/jquery.3.3.1.min.js"></script>
+    <script src="/static/js/header_bar.js"></script>
+    <!-- Fontfaces CSS-->
+    {% load staticfiles %}
+
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+	<!-- Main CSS-->  
+	<link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
+	<link href="{% static 'css/default.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/treeview.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <title>Hệ thống quản lý</title>
+</head>
+<body class="animsition">
+    <div class="page-wrapper">
+            {% include "header_bar.html" %}
+            <div class="page-content--bgf7">
+                <div class="container container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 table">
+                            <div class="card">
+                                <form class="form-control" action="" method="POST">
+                                    <div class="tree main-content">
+                                        <ul class="list-unstyled">
+                                            <li><span><a style="color:#000; text-decoration:none;" data-toggle="collapse" href="#main_node" aria-expanded="true" aria-controls="main_node">
+                                                    <i class="collapsed"><i class="fa fa-plus-square"></i></i>
+                                                    <i class="expanded"><i class="fa fa-minus-square"></i></i> Hệ thống quản lý
+                                                </a></span>
+                                                <div id="main_node" class="collapse show">
+                                                    <ul class="list-unstyled">
+                                                        <!--Tree menu company-->
+                                                        <li>
+                                                            <span><a class="treemain" data-toggle="collapse" href="#company" aria-expanded="false" aria-controls="company">
+                                                                    <i class="collapsed"><i class="fa fa-plus-square"></i></i>
+                                                                    <i class="expanded"><i class="fa fa-minus-square"></i></i> Công ty
+                                                                </a></span>
+                                                            <ul>
+                                                                <div id="company" class="collapse">
+                                                                    <li><span><span></span><a href="" onclick="openSite('{% url 'company' %}');"><i class="far fa-file"></i><span></span>Thêm mới Công ty</a></span></li>
+                                                                    <li><span><span></span><a href="#"><i class="fa fa-edit"></i><span></span>Sửa thông tin Công ty</a></span></li>
+                                                                    <li><span><span></span><a href="#"><i class="fa fa-wrench"></i><span></span>Thay đổi thông tin Công ty</a></span></li>
+                                                                    <!--Tree menu Dept-->
+                                                                    <li>
+                                                                        <span><a class="treemain" data-toggle="collapse" href="#dept" aria-expanded="false" aria-controls="dept">
+                                                                            <i class="collapsed"><i class="fa fa-plus-square"></i></i>
+                                                                            <i class="expanded"><i class="fa fa-minus-square"></i></i> Phòng ban</a>
+                                                                        </span>
+                                                                        <ul>
+                                                                            <div id="dept" class="collapse">
+                                                                                <li><span><span></span><a href="{% url 'dept' %}"><i class="far fa-file"></i><span></span>Thêm mới Phòng ban</a></span></li>
+                                                                                <li><span><span></span><a href="#"><i class="fa fa-edit"></i><span></span>Sửa thông tin Phòng ban</a></span></li>
+                                                                                <li><span><span></span><a href="#"><i class="fa fa-wrench"></i><span></span>Thay đổi thông tin Phòng ban</a></span></li>
+                                                                                <li><span><span></span><a href="{% url 'subdept' %}"><i class="far fa-file"></i><span></span>Thêm mới Bộ phận</a></span></li>
+                                                                                <li><span><span></span><a href="#"><i class="fa fa-edit"></i><span></span>Sửa thông tin Bộ phận</a></span></li>
+                                                                                <li><span><span></span><a href="#"><i class="fa fa-wrench"></i><span></span>Thay đổi thông tin Bộ phận</a></span></li>
+                                                                            </div>
+                                                                        </ul>
+                                                                    </li>
+                                                                </div>
+                                                            </ul>
+                                                        </li>
+                                                        <!--Tree view Employee-->
+                                                        <li>
+                                                            <span>
+                                                                <a class="treemain" data-toggle="collapse" href="#employee" aria-expanded="false" aria-controls="employee">
+                                                                    <i class="collapsed"><i class="fa fa-plus-square"></i></i>
+                                                                    <i class="expanded"><i class="fa fa-minus-square"></i></i> Nhân sự
+                                                                </a>
+                                                            </span>
+                                                            <ul>
+                                                                <div id="employee" class="collapse">
+                                                                    <li>
+                                                            <span>
+                                                                <a style="color:#000; text-decoration:none;" data-toggle="collapse" href="#folder1" aria-expanded="false" aria-controls="folder1">
+                                                                    <i class="collapsed"><i class="fas fa-folder"></i></i>
+                                                                    <i class="expanded"><i class="far fa-folder-open"></i></i> Folder 1
+                                                                </a>
+                                                            </span>
+                                                            <ul>
+                                                                <div id="folder1" class="collapse">
+                                                                    <li><span><i class="far fa-file"></i><a href="#!"> Link 1</a></span></li>
+                                                                    <li><span><i class="far fa-file"></i><a href="#!"> Link 2</a></span></li>
+                                                                    <li><span><i class="far fa-file"></i><a href="#!"> Link 3</a></span>
+                                                                        <a href="#">& More Link</a>
+                                                                    </li>
+                                                                </div>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <a style="color:#000; text-decoration:none;" data-toggle="collapse" href="#folder2" aria-expanded="false" aria-controls="folder2">
+                                                                    <i class="collapsed"><i class="fas fa-folder"></i></i>
+                                                                    <i class="expanded"><i class="far fa-folder-open"></i></i> Folder 2
+                                                                </a>
+                                                            </span>
+                                                            <ul>
+                                                                <div id="folder2" class="collapse">
+                                                                    <li><span><i class="far fa-file"></i><a href="#!"> Link 1</a></span></li>
+                                                                    <li><span><i class="far fa-file"></i><a href="#!"> Link 2</a></span></li>
+                                                                    <li><span><i class="far fa-file"></i><a href="#!"> Link 3</a></span>
+                                                                        <a href="#!">& More Link</a>
+                                                                    </li>
+                                                                </div>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <a style="color:#000; text-decoration:none;" data-toggle="collapse" href="#folder3" aria-expanded="false" aria-controls="folder3">
+                                                                    <i class="collapsed"><i class="fas fa-folder"></i></i>
+                                                                    <i class="expanded"><i class="far fa-folder-open"></i></i> Folder 3
+                                                                </a>
+                                                            </span>
+                                                            <ul>
+                                                                <div id="folder3" class="collapse">
+                                                                    <li><span><i class="far fa-file"></i>
+                                                                        <a href="#!"> Link</a></span> <a href="#!">& More Link</a>
+                                                                    </li>
+                                                                </div>
+                                                            </ul>
+                                                        </li>
+                                                        <li><span><i class="far fa-file"></i><a href="#!"> Link</a></span></li>
+                                                    </div>
+                                                </ul>
+                                                        </li>
+                                                        <li><span><i class="far fa-file"></i><a href="#"> Link 2</a></span></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    {% csrf_token %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2019 GPM Việt Nam. All rights reserved <a href="https://gpm.vn">GPM</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+	<!-- Jquery JS-->
+   <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+   <!-- Bootstrap JS-->
+   <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+   <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+   <!-- Vendor JS       -->
+   <script src="/static/vendor/slick/slick.min.js"></script>
+   <script src="/static/vendor/wow/wow.min.js"></script>
+   <script src="/static/vendor/animsition/animsition.min.js"></script>
+   <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+   <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+   <script src="/static/vendor/counter-up/jquery.counterup.min.js"></script>
+   <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+   <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+   <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+   <script src="/static/vendor/select2/select2.min.js"></script>
+   <!-- Main JS-->
+   <script src="/static/js/main.js"></script>
+
+
+</body>
+</html>

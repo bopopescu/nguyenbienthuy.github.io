@@ -1,0 +1,50 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post" id="frmsubmain" data-currency_url="{% url 'ajax_load_currency' %}" novalidate>
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80"><i class="fa fa-dot-circle-o"></i> Lưu</button>
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80"><i class="fa fa-ban"></i> Xóa</button>
+        </div>
+        <div class="card-body">
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Người sử dụng lao động</legend>
+                {% bootstrap_field form.social_company form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+                {% bootstrap_field form.health_company form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+                {% bootstrap_field form.unemployment_company form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+                {% bootstrap_field form.social_tnld_bnn form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            </fieldset>
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Người lao động</legend>
+                {% bootstrap_field form.social_employee form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+                {% bootstrap_field form.health_employee form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+                {% bootstrap_field form.unemployment_employee form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            </fieldset>
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Hiệu lực</legend>
+                {% bootstrap_field form.startday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm"%}
+                {% bootstrap_field form.endday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+                {% bootstrap_field form.designation form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-4" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            </fieldset>
+        </div>
+    </form>
+    <script>
+        // định dạng kiểu số 1,000,000.11
+        // http://www.decorplanit.com/plugin/
+        // mDec: số chữ số lẻ
+        $('#id_social_company').autoNumeric('init', {mDec: '2', });
+        $('#id_health_company').autoNumeric('init', {mDec: '2', });
+        $('#id_unemployment_company').autoNumeric('init', {mDec: '2', });
+        $('#id_social_tnld_bnn').autoNumeric('init', {mDec: '2', });
+        $('#id_social_employee').autoNumeric('init', {mDec: '2', });
+        $('#id_health_employee').autoNumeric('init', {mDec: '2', });
+        $('#id_unemployment_employee').autoNumeric('init', {mDec: '2', });
+  </script>
+{% endblock %}

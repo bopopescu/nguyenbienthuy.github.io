@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fb8c15eb-1d4d-4c97-81df-edf7d98e7855" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" module-name="myAssistant" is-module-sdk="true">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+    <option name="myUseModuleSdk" value="true" />
+    <option name="myModuleName" value="myAssistant" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="myAssistant" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1OXDIt7YYWIcvvpISSKqnI7VaRr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;sqlite" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="false" />
+    <property name="ToolWindowConcurrent Activities Diagram.ShowToolbar" value="false" />
+    <property name="ToolWindowDatabase.ShowToolbar" value="false" />
+    <property name="ToolWindowDebug.ShowToolbar" value="false" />
+    <property name="ToolWindowFavorites.ShowToolbar" value="false" />
+    <property name="ToolWindowPython Console.ShowToolbar" value="false" />
+    <property name="ToolWindowRun.ShowToolbar" value="false" />
+    <property name="ToolWindowTODO.ShowToolbar" value="false" />
+    <property name="ToolWindowmanage.py@myAssistant.ShowToolbar" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/hrms" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs.jest.jest_package" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\GPM\Projects\myAssistant\templates\company\dropdown_list" />
+      <recent name="E:\GPM\Projects\myAssistant\static\js\employee" />
+      <recent name="E:\GPM\Projects\myAssistant\templates" />
+      <recent name="E:\GPM\Projects\myAssistant\static" />
+      <recent name="E:\GPM\Projects\myAssistant\static\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GPM\Projects\myAssistant\templates\hrms" />
+      <recent name="E:\GPM\Projects\myAssistant\static\multi-column\multi-select" />
+      <recent name="E:\GPM\Projects\myAssistant\static\multi-column" />
+      <recent name="E:\GPM\Projects\myAssistant\templates\company\dropdown_list" />
+      <recent name="E:\GPM\Projects\myAssistant\static\vendor\numeric" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django server.myAssistant">
+    <configuration name="Test: hrms" type="DjangoTestsConfigurationType">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="hrms" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\GPM\myAssistant\env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="0001_initial" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/hrms/migrations" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hrms/migrations/0001_initial.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files (x86)\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files (x86)\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="settings" type="PythonConfigurationType" factoryName="Python">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/myAssistant" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/myAssistant/settings.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.AppEngineServer" factoryName="App Engine server">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="host" value="127.0.0.1" />
+      <option name="browserUrl" value="" />
+      <option name="additionalOptions" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="myAssistant" type="Python.DjangoServer" factoryName="Django server" singleton="false">
+      <module name="myAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="myAssistant.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt">
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.myAssistant" />
+      <item itemvalue="Django tests.Test: hrms" />
+      <item itemvalue="Python.settings" />
+      <item itemvalue="Python.0001_initial" />
+      <item itemvalue="Python.manage" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Python.0001_initial" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="1" BundledDictionary0="english.dic" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fb8c15eb-1d4d-4c97-81df-edf7d98e7855" name="Default Changelist" comment="" />
+      <created>1558055221300</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558055221300</updated>
+      <workItem from="1558055223915" duration="17212000" />
+      <workItem from="1558098562470" duration="8600000" />
+      <workItem from="1558107533657" duration="2387000" />
+      <workItem from="1558111779617" duration="658000" />
+      <workItem from="1558112907506" duration="364000" />
+      <workItem from="1558140442488" duration="8726000" />
+      <workItem from="1558315848273" duration="156000" />
+      <workItem from="1558317135518" duration="648000" />
+      <workItem from="1558317993536" duration="303000" />
+      <workItem from="1558319190352" duration="1161000" />
+      <workItem from="1558323702846" duration="364000" />
+      <workItem from="1558325537738" duration="1869000" />
+      <workItem from="1558332852591" duration="5164000" />
+      <workItem from="1558745211588" duration="12124000" />
+      <workItem from="1558798309517" duration="3973000" />
+      <workItem from="1558869220368" duration="1198000" />
+      <workItem from="1558881246625" duration="844000" />
+      <workItem from="1558942785691" duration="2102000" />
+      <workItem from="1559059419884" duration="175000" />
+      <workItem from="1559304727361" duration="197000" />
+      <workItem from="1559305331392" duration="585000" />
+      <workItem from="1559522709683" duration="534000" />
+      <workItem from="1560299839577" duration="1990000" />
+      <workItem from="1560349264589" duration="1583000" />
+      <workItem from="1560350893370" duration="121000" />
+      <workItem from="1560351046049" duration="97000" />
+      <workItem from="1560351188216" duration="231000" />
+      <workItem from="1560351459045" duration="188000" />
+      <workItem from="1560351679237" duration="526000" />
+      <workItem from="1560352244535" duration="2849000" />
+      <workItem from="1560434703293" duration="977000" />
+      <workItem from="1560483244212" duration="316000" />
+      <workItem from="1560483610327" duration="390000" />
+      <workItem from="1560493545896" duration="159000" />
+      <workItem from="1560558508985" duration="3259000" />
+      <workItem from="1560561830928" duration="3653000" />
+      <workItem from="1560566869063" duration="372000" />
+      <workItem from="1561336710194" duration="3470000" />
+      <workItem from="1561344634178" duration="292000" />
+      <workItem from="1561344984495" duration="258000" />
+      <workItem from="1561349694356" duration="431000" />
+      <workItem from="1561350168621" duration="48000" />
+      <workItem from="1561369113769" duration="325000" />
+      <workItem from="1561695384074" duration="662000" />
+      <workItem from="1561696161944" duration="70000" />
+      <workItem from="1561701808807" duration="5031000" />
+      <workItem from="1561949367941" duration="257000" />
+      <workItem from="1561951713125" duration="319000" />
+      <workItem from="1561953861877" duration="673000" />
+      <workItem from="1561954709831" duration="433000" />
+      <workItem from="1561964497846" duration="17000" />
+      <workItem from="1562126555292" duration="821000" />
+      <workItem from="1562138976892" duration="375000" />
+      <workItem from="1562144572827" duration="417000" />
+      <workItem from="1562247431698" duration="246000" />
+      <workItem from="1562339595331" duration="1177000" />
+      <workItem from="1562423698572" duration="4975000" />
+      <workItem from="1562428711794" duration="24154000" />
+      <workItem from="1562632341651" duration="7972000" />
+      <workItem from="1562652469708" duration="157000" />
+      <workItem from="1562652673325" duration="43588000" />
+      <workItem from="1562805369336" duration="11875000" />
+      <workItem from="1562818308576" duration="2613000" />
+      <workItem from="1562826933050" duration="31092000" />
+      <workItem from="1562921625898" duration="1837000" />
+      <workItem from="1562989596910" duration="11000" />
+      <workItem from="1563005440113" duration="6627000" />
+      <workItem from="1563151012101" duration="707000" />
+      <workItem from="1563242146447" duration="820000" />
+      <workItem from="1563245710281" duration="36000" />
+      <workItem from="1563265834736" duration="20000" />
+      <workItem from="1563336378949" duration="658000" />
+      <workItem from="1563337264092" duration="1268000" />
+      <workItem from="1563344061935" duration="108000" />
+      <workItem from="1563345734758" duration="9825000" />
+      <workItem from="1563416720228" duration="27416000" />
+      <workItem from="1563584350469" duration="1042000" />
+      <workItem from="1563595830096" duration="16353000" />
+      <workItem from="1563683280359" duration="4598000" />
+      <workItem from="1563703970649" duration="45122000" />
+      <workItem from="1563847395388" duration="7636000" />
+      <workItem from="1563855496302" duration="1785000" />
+      <workItem from="1563873717651" duration="52402000" />
+      <workItem from="1564101368179" duration="356000" />
+      <workItem from="1564101850335" duration="9351000" />
+      <workItem from="1564111718661" duration="2449000" />
+      <workItem from="1564114981754" duration="492000" />
+      <workItem from="1564115497773" duration="196000" />
+      <workItem from="1564115795672" duration="3588000" />
+      <workItem from="1564124210580" duration="362000" />
+      <workItem from="1564124616729" duration="16000" />
+      <workItem from="1564124809488" duration="11860000" />
+      <workItem from="1564188156120" duration="21704000" />
+      <workItem from="1564455301636" duration="18395000" />
+      <workItem from="1564620166032" duration="14914000" />
+      <workItem from="1564706072693" duration="51682000" />
+      <workItem from="1564967475749" duration="23280000" />
+      <workItem from="1565053148766" duration="24813000" />
+      <workItem from="1565775342351" duration="1201000" />
+      <workItem from="1568000348416" duration="85000" />
+      <workItem from="1568000509063" duration="927000" />
+      <workItem from="1568081815754" duration="4581000" />
+      <workItem from="1568087289792" duration="2631000" />
+      <workItem from="1568098715371" duration="5386000" />
+      <workItem from="1569200730332" duration="66000" />
+      <workItem from="1569200954761" duration="37795000" />
+      <workItem from="1569373058637" duration="17707000" />
+      <workItem from="1569458835871" duration="15023000" />
+      <workItem from="1569545400123" duration="1196000" />
+      <workItem from="1569546703063" duration="16098000" />
+      <workItem from="1571188008739" duration="10574000" />
+      <workItem from="1571198960672" duration="4204000" />
+      <workItem from="1571272672979" duration="22020000" />
+      <workItem from="1571318665010" duration="1117000" />
+      <workItem from="1571360249291" duration="2760000" />
+      <workItem from="1571388933716" duration="1239000" />
+      <workItem from="1571454159311" duration="1591000" />
+      <workItem from="1571494867602" duration="16010000" />
+      <workItem from="1571574499644" duration="8579000" />
+      <workItem from="1571618493595" duration="12186000" />
+      <workItem from="1571641788151" duration="7246000" />
+      <workItem from="1571666606341" duration="3534000" />
+      <workItem from="1571705368257" duration="37607000" />
+      <workItem from="1571821157382" duration="3934000" />
+      <workItem from="1571838855547" duration="15412000" />
+      <workItem from="1571877657283" duration="17103000" />
+      <workItem from="1571971105214" duration="52513000" />
+      <workItem from="1572269574966" duration="3991000" />
+      <workItem from="1572308675240" duration="1582000" />
+      <workItem from="1572310280471" duration="5550000" />
+      <workItem from="1572331792466" duration="7849000" />
+      <workItem from="1572396234995" duration="869000" />
+      <workItem from="1572399903127" duration="1556000" />
+      <workItem from="1572404750347" duration="344000" />
+      <workItem from="1572406300055" duration="1157000" />
+      <workItem from="1572407501482" duration="107000" />
+      <workItem from="1572407629643" duration="1476000" />
+      <workItem from="1572409144145" duration="773000" />
+      <workItem from="1572410516088" duration="1012000" />
+      <workItem from="1572416079605" duration="3721000" />
+      <workItem from="1572419834996" duration="32013000" />
+      <workItem from="1572654341341" duration="1371000" />
+      <workItem from="1572655914137" duration="807000" />
+      <workItem from="1572656744193" duration="8652000" />
+      <workItem from="1572687815094" duration="4218000" />
+      <workItem from="1572692061712" duration="91000" />
+      <workItem from="1572692175405" duration="737000" />
+      <workItem from="1572743835754" duration="17395000" />
+      <workItem from="1572833075785" duration="20807000" />
+      <workItem from="1572919632058" duration="13484000" />
+      <workItem from="1573000237006" duration="17320000" />
+      <workItem from="1573087183727" duration="20356000" />
+      <workItem from="1573126045114" duration="259000" />
+      <workItem from="1573174237809" duration="19048000" />
+      <workItem from="1575354034724" duration="5035000" />
+      <workItem from="1575359142429" duration="11471000" />
+      <workItem from="1576117468096" duration="94000" />
+      <workItem from="1576117759424" duration="262000" />
+      <workItem from="1576121124783" duration="520000" />
+      <workItem from="1576121910235" duration="17000" />
+      <workItem from="1576122097032" duration="223000" />
+      <workItem from="1576124569468" duration="3506000" />
+      <workItem from="1576287075907" duration="4842000" />
+      <workItem from="1578989759641" duration="90000" />
+      <workItem from="1578990037546" duration="14000" />
+      <workItem from="1580352499555" duration="783000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1323" height="146" key="GridCell.Tab.0.bottom" timestamp="1576457568653">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576457568653" />
+    <state width="1323" height="146" key="GridCell.Tab.0.center" timestamp="1576457568653">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576457568653" />
+    <state width="1323" height="146" key="GridCell.Tab.0.left" timestamp="1576457568652">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576457568652" />
+    <state width="1323" height="146" key="GridCell.Tab.0.right" timestamp="1576457568653">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576457568653" />
+    <state width="1323" height="146" key="GridCell.Tab.1.bottom" timestamp="1576457568654">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576457568654" />
+    <state width="1323" height="146" key="GridCell.Tab.1.center" timestamp="1576457568653">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1576457568653" />
+    <state width="1323" height="146" key="GridCell.Tab.1.left" timestamp="1576457568653">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1576457568653" />
+    <state width="1323" height="146" key="GridCell.Tab.1.right" timestamp="1576457568653">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="146" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1576457568653" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="django-line">
+          <url>file://$PROJECT_DIR$/templates/user_register_login/user_register.html</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/static/js/place_of_id.js</url>
+          <line>32</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/comp/views.py</url>
+          <line>359</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/myAssistant$0001_initial.coverage" NAME="0001_initial Coverage Results" MODIFIED="1558755915315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/hrms/migrations" />
+    <SUITE FILE_PATH="coverage/myAssistant$Test__hrms.coverage" NAME="Test: hrms Coverage Results" MODIFIED="1558746632056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/myAssistant$manage.coverage" NAME="manage Coverage Results" MODIFIED="1568108927704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/myAssistant$settings.coverage" NAME="settings Coverage Results" MODIFIED="1564125680653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/myAssistant" />
+  </component>
+</project>

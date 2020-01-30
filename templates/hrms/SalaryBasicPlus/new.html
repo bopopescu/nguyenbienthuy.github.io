@@ -1,0 +1,28 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post" id="frmsubmain" data-currency_url="{% url 'ajax_load_currency' %}" novalidate>
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80"><i class="fa fa-dot-circle-o"></i> Lưu</button>
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80"><i class="fa fa-ban"></i> Xóa</button>
+        </div>
+        <div class="card-body">
+            {% bootstrap_field form.ratio form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm" %}
+            {% bootstrap_field form.startday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm"%}
+            {% bootstrap_field form.endday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm" %}
+        </div>
+    </form>
+    <script>
+        // định dạng kiểu số 1,000,000.11
+        // http://www.decorplanit.com/plugin/
+        // mDec: số chữ số lẻ
+        $('#id_ratio').autoNumeric('init', {wEmpty: 'zero', mDec: '2', });
+  </script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post" id="frmsubmain" data-currency_url="{% url 'ajax_load_currency' %}" novalidate>
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80"><i class="fa fa-dot-circle-o"></i> Lưu</button>
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80"><i class="fa fa-ban"></i> Xóa</button>
+        </div>
+        <div class="card-body">
+            {% bootstrap_field form.amount form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-3" label_class="col col-sm-1 form-control-sm" size="sm" %}
+            {% bootstrap_field form.currency form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-3" label_class="col col-sm-1 form-control-sm" size="sm"%}
+            <input type="hidden" id="selected_currency" name="selected_currency" value="{{ selected_currency }}">
+            {% bootstrap_field form.startday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-3" label_class="col col-sm-1 form-control-sm" size="sm"%}
+            {% bootstrap_field form.endday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-3" label_class="col col-sm-1 form-control-sm" size="sm" %}
+        </div>
+    </form>
+    <script>
+        // Fill Currency
+        $('#id_currency').focus(function () {
+            let url = $('#frmsubmain').attr("data-currency_url");
+            let selected_currency = $('#selected_currency').val();
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+                data: {
+                    'selected_gender': selected_currency       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $('#id_currency').html(data);  // replace the contents of the city input with the data that came from the server
+                }
+            });
+        });
+
+        let elem = $(".meal_money_amount");
+
+        $(elem).keypress(function (e){
+            let charCode = (e.which) ? e.which : e.keyCode;
+            if ((charCode > 31 && (charCode < 46 || charCode > 57)) || charCode === 47) { return false; }
+        });
+
+        $(elem).focus(function() {
+            let s = this.value;
+            $('#' + this.id).val(s.replace(/,/g, ""));
+        });
+
+        $(elem).blur(function() {
+            let n = parseFloat((this.value.replace(/,/g, "")) ? this.value.replace(/, /g, "") : '0');
+            $('#' + this.id).val(n.toLocaleString("en-US", { minimumFractionDigits: 0 }));
+        });
+
+  </script>
+{% endblock %}

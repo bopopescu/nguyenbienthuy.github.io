@@ -1,0 +1,126 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+{% load humanize %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-pull-8">
+            <h1 class="title-3 m-b-10"><strong><i class="zmdi zmdi-money-box"></i>HRMs</strong> Tiền lương tối thiểu tăng thêm</h1>
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+                    <div class="rs-select2--light rs-select2--md" hidden>
+                        <select class="js-select2" name="property" hidden>
+                            <option selected="selected" hidden>All Properties</option>
+                            <option value="">Option 1</option>
+                            <option value="">Option 2</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    <div class="rs-select2--light rs-select2--sm" hidden>
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Today</option>
+                            <option value="">3 Days</option>
+                            <option value="">1 Week</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    <button class="au-btn-filter" hidden><i class="zmdi zmdi-filter-list"></i>filters</button>
+                    <form class="form-inline" action="" method="GET">
+                        {% bootstrap_field form.search_text form_group_class="" layout="inline" size="sm" show_label="False"%}
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="zmdi zmdi-search"></i></button>
+                    </form>
+                </div>
+                <div class="table-data__tool-right">
+                    <a href="{% url 'salarybasic_plus_add' %}"><button type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"><span> Thêm mới</span></i></button></a>
+                    <!--
+                    <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                        <select class="js-select2" name="type">
+                            <option selected="selected">Export</option>
+                            <option value="">Option 1</option>
+                            <option value="">Option 2</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2">
+                    <thead>
+                    <tr class="spacer"></tr>
+                    <tr class="tr-shadow">
+                        <th class="text-left">ID</th>
+                        <th class="text-left">Tỷ lệ</th>
+                        <th class="text-left">từ ngày</th>
+                        <th class="text-left">đến ngày</th>
+                        <th class="text-left">thực hiện</th>
+                    </tr>
+                    </thead>
+                    <tbody><tr class="spacer"></tr>
+                    {% for s in salarybasic_plus %}
+                        <tr class="tr-shadow">
+                            <td class="text-left">{{ s.salary_basic_plus_id }}</td>
+                            <td class="text-right">{{ s.ratio | floatformat:2 | intcomma }}</td>
+                            <td class="text-left">{{ s.startday | date:"d/m/Y"}}</td>
+                            <td class="text-left">{{ s.endday | date:"d/m/Y" }}</td>
+                            <td>
+                                <a href="{% url 'salarybasic_plus_edit' s.pk %}">
+                                    <button type="button" class="btn btn-success btn-sm" title="Sửa">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </a>
+                                <a href="{% url 'salarybasic_plus_delete' s.pk %}" class="confirm-delete">
+                                    <button type="button" class="btn btn-danger btn-sm" title="Xóa">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="spacer"></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% if is_paginated %}
+                    {% include "paginator.html" %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.confirm-delete').click(function () {
+            let elem = $(this);
+            $.confirm({
+                title: '<strong>Xác nhận</strong>',
+                type: 'red',
+                content: 'Bạn có muốn xóa không?',
+                draggable: false,
+                typeAnimated: true,
+                buttons: {
+                    'Ok': {
+                        text: 'Đồng ý',
+                        class: 'blue',
+                        btnClass: 'btn-blue',
+                        'action': function () { elem.click(); }
+                    },
+                    'Close': {
+                        text: 'Hủy',
+                        width: '80px',
+                        class: 'gray',
+                        btnClass: 'btn-red',
+                        action: function () {}  // Nothing to do in this case. You can as well omit the action property.
+                    }
+                },
+                icon: 'fa fa-trash',
+                bootstrapClasses: {
+                    container: 'container',
+                    containerFluid: 'container-fluid',
+                    row: 'row',
+                },
+                theme: 'bootstrap',
+                useBootstrap: true,
+            });
+            return false;
+        });
+    </script>
+{% endblock %}

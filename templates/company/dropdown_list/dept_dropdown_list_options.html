@@ -1,0 +1,8 @@
+<option value="">Chọn phòng ban...</option>
+{% for d in depts %}
+    {% if d.dept_id == selected_dept %}
+        <option value="{{ d.dept_id }}" selected>{{ d.dept_name }}</option>
+    {% else %}
+        <option value="{{ d.dept_id }}">{{ d.dept_name }}</option>
+    {% endif %}
+{% endfor %}

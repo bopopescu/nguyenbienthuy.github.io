@@ -1,0 +1,89 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post" id="frmsubmain" style="height: 400px"
+          data-workingtime-url="{% url 'ajax_load_workingtime' %}"
+          data-daysofweek-url="{% url 'ajax_load_daysofweek' %}"
+          data-workinggroup-url="{% url 'ajax_load_workinggroup' %}"
+          novalidate>
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80"><i class="fa fa-dot-circle-o"></i> Lưu</button>
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80"><i class="fa fa-ban"></i> Xóa</button>
+        </div>
+        <div class="card-body">
+            {% bootstrap_field form.workinggroup form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm" %}
+            {% bootstrap_field form.workingtime form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm" %}
+            {% bootstrap_field form.daysofweek form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-3" label_class="col col-sm-1 form-control-sm" size="sm" %}
+        </div>
+    </form>
+    <script src="/static/multi-column/multi-select/dist/js/BsMultiSelect.js"></script>
+    <script>
+        let f = $('#frmsubmain');
+        $('#id_workingtime').inputpicker({
+            url: f.attr("data-workingtime-url"),
+            fields: [
+                {name: 'workingtime_id', text: 'ID'},
+                {name: 'name', text: 'Ca'},
+                {name: 'starttime', text: 'Giờ bắt đầu'},
+                {name: 'endtime', text: 'Giờ kết thúc'},
+                {name: 'description', text: 'Diễn giải'},
+            ],
+            creatable: true,
+            fieldText: 'name',
+            fieldValue: 'workingtime_id',
+            headShow: true,
+            filterOpen: true,
+            autoOpen: true,
+            rowSelectedBackgroundColor: '#4272D7',
+            rowSelectedFontColor: 'white',
+            highlightResult: true,
+            selectMode: "active",
+            width: "500px",
+        });
+
+        $('#id_workinggroup').inputpicker({
+            url: f.attr("data-workinggroup-url"),
+            fields: [
+                {name: 'workinggroup_id', text: 'ID'},
+                {name: 'name', text: 'Ca'},
+            ],
+            creatable: true,
+            fieldText: 'name',
+            fieldValue: 'workinggroup_id',
+            headShow: true,
+            filterOpen: true,
+            autoOpen: true,
+            rowSelectedBackgroundColor: '#4272D7',
+            rowSelectedFontColor: 'white',
+            highlightResult: true,
+            selectMode: "active",
+            width: "100%"
+        });
+        /*multi select
+        $('#id_daysofweek').multiselect({
+            columns: 2,
+            placeholder: 'Chọn...',
+            //search: true,
+            texts: {
+              selectAll: 'Chọn tất cả',
+              unselectAll: 'Bỏ chọn tất cả',
+            },
+            searchOptions: {
+                'default': 'Chọn ...'
+            },
+            selectAll: true
+        });
+
+         */
+        $('#id_daysofweek').bsMultiSelect();
+
+
+    </script>
+{% endblock %}

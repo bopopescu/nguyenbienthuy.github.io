@@ -1,0 +1,161 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post" id="frmsubmain"
+          data-employee-url="{% url 'ajax_load_employee' %}"
+          data-company_cbb-url="{% url 'ajax_load_companies_cbb' %}"
+          data-depts-url="{% url 'ajax_load_depts' %}"
+          data-subdepts-url="{% url 'ajax_load_subdepts' %}"
+          data-salaryscale-url="{% url 'ajax_load_salaryscale'%}"
+          data-salarybasic-url="{% url 'ajax_load_salarybasic' %}"
+          novalidate>
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80"><i class="fa fa-dot-circle-o"></i> Lưu</button>
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80"><i class="fa fa-ban"></i> Xóa</button>
+        </div>
+        <div class="card-body">
+            {% bootstrap_field form.contract_number form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.contract_day form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.startday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.term form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.maturity_date form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.endday form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            <hr>
+            <!-- Thông tin các bên ký hợp đồng -->
+            {% bootstrap_field form.cif form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.company form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-4" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.dept form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-4" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.subdept form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-4" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            <hr>
+            {% bootstrap_field form.scale form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.salary_basic form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.salary_benefit form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.mealmoney form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            <hr>
+            {% bootstrap_field form.insurance form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            {% bootstrap_field form.union form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+            <hr>
+            {% bootstrap_field form.workinggroup form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-2 form-control-sm" size="sm" %}
+        </div>
+    </form>
+    <script>
+    $(document).ready(function() {
+        let f = $('#frmsubmain');
+        let company = $('#id_company');
+        let dept = $('#id_dept');
+        let subdept = $('#id_subdept');
+        // Fill Employee
+        $('#id_cif').inputpicker({
+            url: f.attr("data-employee-url"),
+            fields: [
+                {name: 'cif', text: 'CIF'},
+                {name: 'fullname', text: 'Họ tên'},
+                {name: 'birthday', text: 'Ngày sinh'},
+                {name: 'gender__gender_name', text: 'Giới tính'},
+            ],
+            fieldText: 'fullname', fieldValue: 'cif',
+            headShow: true, filterOpen: true, autoOpen: true, rowSelectedBackgroundColor: '#4272D7', creatable: true,
+            rowSelectedFontColor: 'white', highlightResult: true, selectMode: "active", width: "200%",
+        });
+        // Fill Company
+        company.inputpicker({
+            url: f.attr("data-company_cbb-url"),
+            fields: [
+                {name: 'company_id', text: 'CIF'},
+                {name: 'company_name', text: 'Tên công ty'},
+                {name: 'company_short_name', text: 'Tên tắt'},
+                {name: 'certificate__company_address', text: 'Địa chỉ'},
+            ],
+            fieldText: 'company_name', fieldValue: 'company_id',
+            headShow: true, filterOpen: true, autoOpen: true, rowSelectedBackgroundColor: '#4272D7', creatable: true,
+            rowSelectedFontColor: 'white', highlightResult: true, selectMode: "active", width: "200%",
+        });
+        // Fill Dept
+        company.change(function () {
+            let url = f.attr("data-depts-url");  // get the url of the `load_cities` view
+            let company_id = company.val();  // get the selected country ID from the HTML input
+
+            let selected_dept = $("#selected_dept").val();
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+                data: {
+                    'company': company_id,       // add the country id to the GET parameters
+                    'selected_dept': selected_dept
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    dept.html(data);  // replace the contents of the city input with the data that came from the server
+                    subdept.html('');
+                }
+            });
+        });
+        // Fill subdept
+        dept.change(function () {
+            let url = f.attr("data-subdepts-url");  // get the url of the `load_cities` view
+            let dept_id = dept.val();  // get the selected country ID from the HTML input
+            let selected_subdept = $("#selected_subdept").val();
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+                data: {
+                    'dept': dept_id,       // add the country id to the GET parameters
+                    'selected_subdept': selected_subdept,
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    subdept.html(data);  // replace the contents of the city input with the data that came from the server
+                }
+            });
+        });
+        // Fill SalaryScale
+        $('#id_scale').inputpicker({
+            url: f.attr("data-salaryscale-url"),
+            fields: [
+                {name: 'scale_id', text: 'ID'},
+                {name: 'name', text: 'Tên bậc'},
+                {name: 'scale', text: 'Hệ số'},
+            ],
+            fieldText: 'name', fieldValue: 'scale_id',
+            headShow: true, filterOpen: true, autoOpen: true, rowSelectedBackgroundColor: '#4272D7', creatable: true,
+            rowSelectedFontColor: 'white', highlightResult: true, selectMode: "active", width: "200%",
+        });
+        // Fill SalaryBasic
+        $('#id_salary_basic').inputpicker({
+            url: f.attr("data-salarybasic-url"),
+            fields: [
+                {name: 'salary_basic_id', text: 'ID'},
+                {name: 'name', text: 'Tên vùng'},
+                {name: 'amount', text: 'Số tiền'},
+                {name: 'currency__currency_name', text: 'Đơn vị tính'},
+            ],
+            fieldText: 'name', fieldValue: 'salary_basic_id',
+            headShow: true, filterOpen: true, autoOpen: true, rowSelectedBackgroundColor: '#4272D7', creatable: true,
+            rowSelectedFontColor: 'white', highlightResult: true, selectMode: "active", width: "200%",
+        });
+        // Fill MealMoney
+        $('#id_mealmoney').inputpicker({
+            url: f.attr("data-mealmoney-url"),
+            fields: [
+                {name: 'salary_basic_id', text: 'ID'},
+                {name: 'name', text: 'Tên vùng'},
+                {name: 'amount', text: 'Số tiền'},
+                {name: 'currency__currency_name', text: 'Đơn vị tính'},
+            ],
+            fieldText: 'name', fieldValue: 'salary_basic_id',
+            headShow: true, filterOpen: true, autoOpen: true, rowSelectedBackgroundColor: '#4272D7', creatable: true,
+            rowSelectedFontColor: 'white', highlightResult: true, selectMode: "active", width: "200%",
+        });
+
+        // định dạng kiểu số 1,000,000.11
+        // http://www.decorplanit.com/plugin/
+        // mDec: số chữ số lẻ
+        //$('#id_salary_benefit').autoNumeric('init', {mDec: '2', });
+        $('#id_salary_benefit').autoNumeric('init', {wEmpty: 'zero', mDec: '2', });
+    });
+
+    </script>
+{% endblock %}

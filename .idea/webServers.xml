@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c0c07a77-dfc5-4187-9bd0-164090d6ed07" name="hrms_test" url="http://localhost:8001/">
+        <fileTransfer port="0" mountedRoot="E:\GPM\KHACH HANG\PublicWebSite\HRMs" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

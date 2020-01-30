@@ -1,0 +1,10 @@
+<option value="">Chọn dân tộc...</option>
+{% for p in people %}
+    {% if selected_people is None and p.people_id == 1 %}
+        <option value="{{ p.people_id }}" selected>{{ p.people_name }}</option>
+    {% elif p.people_id == selected_people %}
+        <option value="{{ p.people_id }}" selected>{{ p.people_name }}</option>
+    {% else %}
+        <option value="{{ p.people_id }}">{{ p.people_name }}</option>
+    {% endif %}
+{% endfor %}

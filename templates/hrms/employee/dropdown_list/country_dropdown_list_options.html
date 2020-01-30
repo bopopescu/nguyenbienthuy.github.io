@@ -1,0 +1,8 @@
+<option value="">Chọn quốc tịch...</option>
+{% for ct in countries %}
+    {% if ct.nation_id == selected_country %}
+        <option value={{ ct.nation_id }} selected>{{ ct.nation_name }}</option>
+    {% else %}
+        <option value={{ ct.nation_id }}>{{ ct.nation_name }}</option>
+    {% endif %}
+{% endfor %}

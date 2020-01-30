@@ -1,0 +1,34 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post">
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80" id="save" name="save">
+                <i class="fa fa-dot-circle-o"></i> Lưu
+            </button>
+            <!--Save thử để kiểm tra lỗi nhập liệu-->
+            <button class="btn btn-sm btn-primary btn__sm__w80" type="button" id="test_save" name="test_save">
+                <i class="fa fa-question"></i> Thử
+            </button>
+            <!--Điều chỉnh thông tin
+            <button class="btn btn-sm btn-warning btn__sm__w80" type="submit" id="update" name="update">
+                <i class="fa fa-edit"></i> Sửa
+            </button>-->
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80" id="reset">
+                <i class="fa fa-ban"></i> Xóa
+            </button>
+        </div>
+        <!--{% bootstrap_form_errors form %}-->
+        <div class="card-body">
+            {% bootstrap_field form.gender_id form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm"%}
+            {% bootstrap_field form.gender_name form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm"%}
+        </div>
+    </form>
+{% endblock %}

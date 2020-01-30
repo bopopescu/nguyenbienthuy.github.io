@@ -1,0 +1,29 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post">
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80" id="save" name="save">
+                <i class="fa fa-dot-circle-o"></i> Lưu
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80" id="reset">
+                <i class="fa fa-ban"></i> Xóa
+            </button>
+        </div>
+        {% bootstrap_form_errors form %}
+        <div class="card-body">
+            {% bootstrap_field form.id_name_code form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-3" label_class="col col-sm-1 form-control-sm" size="sm"%}
+            {% bootstrap_field form.name_of_identification form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-3" label_class="col col-sm-1 form-control-sm" size="sm"%}
+        </div>
+    </form>
+    <script>
+
+    </script>
+{% endblock %}

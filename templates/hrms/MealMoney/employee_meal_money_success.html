@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách tiền ăn trưa</title>
+</head>
+<body>
+    {% include "hrms/../menu_bar.html" %}
+    <p></p>
+
+    <table border="1" cellpadding="5" cellspacing="1">
+        <tr>
+            <th>Mã</th>
+            <th>Số tiền</th>
+            <th>Loại tiền</th>
+            <th>Từ ngày</th>
+            <th>Đến ngày</th>
+        </tr>
+        {% load humanize %}
+        {% for e in meal_money %}
+        <tr>
+            <td>{{ e.meal_money_code }}</td>
+            <td>{{ e.meal_money_amount | floatformat:2 | intcomma }}</td>
+            <td>{{ e.currency }}</td>
+            <td>{{ e.startday }}</td>
+            <td>{{ e.endday }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

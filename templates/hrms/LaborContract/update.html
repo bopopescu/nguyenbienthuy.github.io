@@ -1,0 +1,44 @@
+{% extends 'hrms/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+    <form role="form" method="post" id="frmsubmain">
+        {% csrf_token %}
+        <div class="card-header">
+            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80"><i class="fa fa-dot-circle-o"></i> Lưu</button>
+            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80"><i class="fa fa-ban"></i> Xóa</button>
+        </div>
+        <div class="card-body">
+            {% bootstrap_field form.name form_group_class="row" layout="horizontal" horizontal_field_class="col-6 col-sm-2" label_class="col col-sm-1 form-control-sm" size="sm" %}
+        </div>
+    </form>
+    <script>
+        let f = $('#frmsubmain');
+        $('#id_workingtime').inputpicker({
+            url: f.attr("data-workingtime-url"),
+            fields: [
+                {name: 'workingtime_id', text: 'ID'},
+                {name: 'name', text: 'Ca'},
+                {name: 'starttime', text: 'Giờ bắt đầu'},
+                {name: 'endtime', text: 'Giờ kết thúc'},
+                {name: 'description', text: 'Diễn giải'},
+            ],
+            creatable: true,
+            fieldText: 'name',
+            fieldValue: 'workingtime_id',
+            headShow: true,
+            filterOpen: true,
+            autoOpen: true,
+            rowSelectedBackgroundColor: '#4272D7',
+            rowSelectedFontColor: 'white',
+            highlightResult: true,
+            selectMode: "active",
+            width: "500px",
+        });
+    </script>
+{% endblock %}

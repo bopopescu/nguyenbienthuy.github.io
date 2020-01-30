@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Title Page-->
+    <title>Nhập thông tin Phòng/ban</title>
+    <!--JS-->
+    <script src="/static/js/jquery.3.3.1.min.js"></script>
+    <script src="/static/js/company/dept.js"></script>
+    <script src="/static/js/header_bar.js"></script>
+    <!-- Fontfaces CSS-->
+    {% load staticfiles %}
+   
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/default.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!--Thêm header_bar chung cho trang-->
+        {% include "header_bar.html" %}
+        <!--Nội dung trang-->
+        <div class="page-content--bgf7">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb-content">
+                <div class="container">
+                    <!-- MAIN CONTENT-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                        <strong>Form</strong> Nhập thông tin Phòng/ban
+                                    </div>
+                                <div class="card-header">
+                                    <button type="submit" class="btn btn-primary btn-sm btn__sm__w80" id="save">
+                                        <i class="fa fa-dot-circle-o"></i> Lưu
+                                    </button>
+                                    <!--Save thử để kiểm tra lỗi nhập liệu-->
+                                    <button class="btn btn-sm btn-primary btn__sm__w80" type="submit" id="test_save">
+                                        <i class="fa fa-question"></i> Thử
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm btn__sm__w80" id="reset" onclick="resetAddCompany()">
+                                        <i class="fa fa-ban"></i> Xóa
+                                    </button>
+                                    <script>
+                                        function resetAddCompany() {
+                                            document.getElementById("dept_new").reset();
+                                        }
+                                    </script>
+                                </div>
+                                <!--Nếu có lỗi nhập liệu thì báo đường dẫn lỗi -->
+                                {% if error_message %}
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col col-sm-8">
+                                                <p style="color:#ff0000">{{ error_message | safe }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="card-body card-block">
+                                    <form action="{% url 'add_dept' %}" method="post" enctype="multipart/form-data"
+                                          class="form-horizontal" id="dept_new">
+                                        <table class="main_table" id="main_table" style="border:0">
+                                            <tr>
+                                                <td><label for="company" class="form-control-label">Công ty</label></td>
+                                                <td></td>
+                                                <td>
+                                                    <select class="form-control-sm form-control company" name="company" id="company">
+                                                        <option value=""></option>
+                                                        {% for cmp in comp %}
+                                                            {% if cmp.company_id == company_choose %}
+                                                                <option value={{ cmp.company_id }} selected>{{ cmp.company_name }}</option>
+                                                            {% else %}
+                                                                <option value={{ cmp.company_id }}>{{ cmp.company_name }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr><td colspan="3"><hr></td></tr>  <!--GẠCH NGANG-->
+                                            <tr><td><input type="hidden" id="count_dept_name" name="count_dept_name"></td></tr>
+                                            {% for dn in dept_name %}
+                                                <tr>
+                                                    <td><label for="{{dn.dn_id}}" class="form-control-label">Tên phòng ban {{dn.row}}</label></td>
+                                                    <td>
+                                                        <button class="btn btn-primary btn-sm add_dept_name" tabindex="-1"><i class='fas fa-plus'></i></button>
+                                                        <button class="btn btn-danger btn-sm del_dept_name" tabindex="-1"><i class='fas fa-minus'></i></button>
+                                                    </td>
+                                                    <td>
+                                                        <input class="input-sm form-control-sm form-control dept_name"
+                                                               id="{{dn.dn_id}}" type="text" name="{{dn.dn_name}}"
+                                                               placeholder="Tên phòng ban" value="{{dn.dept_name}}" required
+                                                               oninvalid="this.setCustomValidity('Nhập tên phòng ban')">
+                                                    </td>                                            
+                                                </tr>                                                                                                                                             
+                                                <tr>
+                                                    <td><label for="{{dn.startday_id}}" class="form-control-label">Từ ngày</label></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <input class="input-sm form-control-sm form-control date"
+                                                               name="{{dn.startday_name}}" id="{{dn.startday_id}}"
+                                                               type="date" value="{{ dn.startday }}" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="{{dn.endday_id}}" class="form-control-label">Đến ngày</label></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <input class="input-sm form-control-sm form-control date endday"
+                                                               name="{{dn.endday_name}}" id="{{dn.endday_id}}"
+                                                               type="date" value="{{dn.endday}}" disabled>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                        <!--Input text ẩn = 0 thì #save click, = 1 thì #test_save click kiểm tra trong view.py-->
+                                        <label for="flag_test" hidden></label>
+                                        <input type="text" id="flag_test" name="flag_test" value="0" hidden>
+                                        {% csrf_token %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2019 GPM Việt Nam. All rights reserved <a href="https://gpm.vn">GPM</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+   <!-- Jquery JS-->
+   <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+   <!-- Bootstrap JS-->
+   <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+   <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+   <!-- Vendor JS       -->
+   <script src="/static/vendor/slick/slick.min.js"></script>
+   <script src="/static/vendor/wow/wow.min.js"></script>
+   <script src="/static/vendor/animsition/animsition.min.js"></script>
+   <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+   <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+   <script src="/static/vendor/counter-up/jquery.counterup.min.js"></script>
+   <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+   <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+   <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+   <script src="/static/vendor/select2/select2.min.js"></script>
+   <!-- Main JS-->
+   <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

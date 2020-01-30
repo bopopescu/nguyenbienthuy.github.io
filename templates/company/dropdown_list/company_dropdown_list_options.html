@@ -1,0 +1,8 @@
+<option value="">Chọn công ty...</option>
+{% for company in companies %}
+    {% if company.company_id == selected_company %}
+        <option value="{{ company.company_id }}" selected>{{ company.company_name }}</option>
+    {% else %}
+        <option value="{{ company.company_id }}">{{ company.company_name }}</option>
+    {% endif %}
+{% endfor %}

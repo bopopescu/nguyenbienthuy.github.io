@@ -1,0 +1,8 @@
+<option value="">Chọn...</option>
+{% for g in genders %}
+    {% if g.gender_id == selected_gender %}
+        <option value="{{ g.gender_id }}" selected>{{ g.gender_name }}</option>
+    {% else %}
+        <option value="{{ g.gender_id }}">{{ g.gender_name }}</option>
+    {% endif %}
+{% endfor %}

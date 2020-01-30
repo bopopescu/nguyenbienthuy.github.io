@@ -1,0 +1,8 @@
+<option value="">Chọn bộ phận...</option>
+{% for sd in subdepts %}
+    {% if sd.subdept_id == selected_subdept %}
+        <option value="{{ sd.subdept_id }}" selected>{{ sd.subdept_name }}</option>
+    {% else %}
+        <option value="{{ sd.subdept_id }}"> {{ sd.subdept_name }}</option>
+    {%endif%}
+{% endfor %}

@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm mới nhân viên</title>
+    <script src="/static/js/jquery.3.3.1.min.js"></script>
+    <script src="/static/js/employee/employee.js"></script>
+
+    <!-- Jquery JS-->
+    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/header_bar.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/vendor/slick/slick.min.js"></script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js"></script>
+    <!-- Main JS-->
+    <script src="/static/js/main.js"></script>
+    {% load staticfiles %}
+
+    <!-- Fontfaces CSS-->
+    
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">   
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+    
+</head>
+<body class="animsition">
+    <div class="page-wrapper">
+        <!--Thêm header_bar chung cho trang-->
+        {% include "header_bar.html" %}
+        <!--Nội dung trang-->
+        <div class="page-content--bgf7">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <!--
+                                <div class="card-header">
+                                    <div class="row">
+                                        <strong>Nhân sự&nbsp;</strong> Thêm mới
+                                    </div>
+                                </div>
+                                -->
+                                <div class="card-body card-block">
+                                    <form method="post" action="{% url 'employee_new' %}"
+                                          data-depts-url="{% url 'ajax_load_depts' %}"
+                                          data-subdepts-url="{% url 'ajax_load_subdepts' %}"
+                                          data-companies-url="{% url 'ajax_load_companies' %}"
+                                          data-genders-url="{% url 'ajax_load_genders' %}"
+                                          data-idnames-url="{% url 'ajax_load_idnames' %}"
+                                          data-idplaces-url="{% url 'ajax_load_idplaces' %}"
+                                          class="form-horizontal employee_new" id="employee_new">
+                                        <!--Cif nhân viên -->
+                                        <div class="card-header">
+                                            <button type="submit" class="btn btn-primary btn-sm btn__sm__w80" id="save" name="save">
+                                                <i class="fa fa-dot-circle-o"></i> Lưu
+                                            </button>
+                                            <!--Save thử để kiểm tra lỗi nhập liệu-->
+                                            <button class="btn btn-sm btn-primary btn__sm__w80" type="submit" id="test_save" name="test_save">
+                                                <i class="fa fa-question"></i> Thử
+                                            </button>
+                                            <!--Điều chỉnh thông tin-->
+                                            <button class="btn btn-sm btn-warning btn__sm__w80" type="submit" id="update" name="update">
+                                                <i class="fa fa-edit"></i> Sửa
+                                            </button>
+                                            <button type="reset" class="btn btn-danger btn-sm btn__sm__w80" id="reset" onclick="resetAddCompany()">
+                                                <i class="fa fa-ban"></i> Xóa
+                                            </button>
+                                        </div>
+                                        <!--
+                                        <div class="row form-group">
+                                            <button class="btn btn-primary btn-sm btn__sm__65per" type="submit" id="commit"><i class="fa fa-check"></i></button><span>&nbsp;</span>
+                                            <button class="btn btn-primary btn-sm btn__sm__65per" type="submit"><i class="fa fa-question"></i><i class="fa fa-check"></i></button>
+                                            <span>&nbsp;</span>
+                                            <button class="btn btn-danger btn-sm btn__sm__65per" type="button"><i class="fa fa-times"></i></button><span>&nbsp;</span>
+                                            <span>&nbsp;</span>
+                                            <button class="btn btn-primary btn-sm btn__sm__65per" type="button"><i class="fa fa-print"></i></button><span>&nbsp;</span>
+                                            <button class="btn btn-outline-primary btn-sm btn__sm__65per" type="button"><i class="fa fa-arrow-up"></i></button><span>&nbsp;</span>
+                                        </div>
+                                        <div class="row">
+                                            <label for="search" class="form-control-sm">Mã công ty </label>
+                                            <input class="input-sm form-control-sm form-control search_actions" type="text" name="search" value="{{ company_id }}" {{ readonly }}
+                                                       id="search" placeholder="Thông tin Công ty..." />
+                                            <script>
+                                                $('#search').inputpicker({
+                                                    'data': JSON.parse('{{ data | safe}}'),
+                                                    fields: [
+                                                        {name:'company_id',text:'Mã công ty'},
+                                                        {name:'company_name',text:'Tên công ty'},
+                                                        {name:'company_short_name',text:'Tên tắt'},
+                                                        {name:'company_address',text:'Địa chỉ'},
+                                                        {name:'cert_day',text:'Ngày cấp'},
+                                                    ],
+                                                    creatable : true,
+                                                    fieldText: 'company_id',
+                                                    fieldValue: 'company_id',
+                                                    headShow: true,
+                                                    filterOpen: true,
+                                                    autoOpen: true,
+                                                    rowSelectedBackgroundColor: '#4272D7',
+                                                    rowSelectedFontColor : 'white',
+                                                    highlightResult : false,
+                                                    selectMode: "active",
+                                                    width: "100%"
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                    -->
+                                        <!--Nếu có lỗi nhập liệu thì báo đường dẫn lỗi -->
+                                        {% if error_message %}
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col col-sm-8">
+                                                        <p style="color:#ff0000">{{ error_message | safe }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <div><br></div>
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="cif" class="pr-1 form-control-sm">Mã số</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <input class="input-sm form-control-sm form-control cif"
+                                                       id="cif" type="text" name="cif"
+                                                       placeholder="Mã nhân viên [4 ký tự]" value="{{ cif }}"
+                                                       pattern="[1-9]+[0-9]{3,3}" maxlength="4" required readonly>
+                                            </div>
+                                            <div class="col col-sm-2">
+                                                <div class="form-check">
+                                                    <div class="checkbox">
+                                                        <label for="auto_company_id" class="form-check-label ">
+                                                            <input type="checkbox" id="auto_company_id"
+                                                                   name="auto_company_id" tabindex="-1" value="True"
+                                                                   class="form-check-input" checked>Tự động
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Tên Nhân viên -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="fullname" class="form-control-sm">Họ tên</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-4">
+                                                <input class="input-sm form-control-sm form-control fullname"
+                                                       id="fullname" type="text" name="fullname"
+                                                       placeholder="Nguyễn Văn A" value="{{ fullname }}" required >
+                                            </div>
+                                        </div>
+                                        <!-- Giới tính -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="gender" class="form-control-sm">Giới tính</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <select class="form-control-sm form-control gender" name="gender" id="gender" required></select>
+                                                <input type="hidden" id="selected_gender" name="selected_gender" value="{{ selected_gender }}">
+                                            </div>
+                                        </div>
+                                        <!-- Ngày sinh -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="birthday" class="form-control-sm">Ngày sinh</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <input class="form-control-sm form-control date" name="birthday" id="birthday"
+                                                       type="date" required value="{{ birthday }}">
+                                            </div>
+                                        </div>
+                                        <!-- Gạch ngang -->
+                                        <div><hr></div>
+                                        <!-- Loại giấy tờ tùy thân -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="idname" class="form-control-sm">Loại giấy</label>
+                                            </div>
+                                        <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <select class="form-control-sm form-control idname" name="idname" id="idname" required></select>
+                                                <input type="hidden" id="selected_idname" name="selected_idname" value="{{ selected_idname }}">
+                                            </div>
+                                        </div>
+                                        <!-- Số CMND/CCCD/Hộ chiếu -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="emp_id" class="form-control-sm">Số CMND/CCCD</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <input class="input-sm form-control-sm form-control emp_id" name="emp_id"
+                                                       id="emp_id" type="text" required value="{{ emp_id }}">
+                                            </div>
+                                        </div>
+                                        <!-- Ngày cấp CMND/CCCD/Hộ chiếu -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="id_startday" class="form-control-sm">Cấp ngày</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <input class="form-control-sm form-control date" name="id_startday" id="id_startday"
+                                                        type="date" required value="{{ id_startday }}">
+                                            </div>
+                                        </div>
+                                        <!-- Nơi cấp -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="place_of_identification" class="form-control-sm">Nơi cấp</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-3">
+                                                <select class="form-control-sm form-control place_of_identification"
+                                                        name="place_of_identification" id="place_of_identification" required></select>
+                                                <input type="hidden" id="selected_idplace" name="selected_idplace" value="{{ selected_idplace }}">
+                                            </div>
+                                            </div>
+                                        <div><hr></div>
+                                        <!-- Dân tộc -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="people" class="form-control-sm">Dân tộc</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <select class="form-control-sm form-control people" name="people" id="people"
+                                                        data-people-url="{% url 'ajax_load_people' %}" required></select>
+                                                <input type="hidden" id="selected_people" name="selected_people" value="{{ selected_people }}">
+                                            </div>
+                                        </div>
+                                        <!-- Quốc tịch -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="nation" class="form-control-sm">Quốc tịch</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col-6 col-sm-2">
+                                                <select class="form-control-sm form-control nation" name="nation" id="nation"
+                                                        data-countries-url="{% url 'ajax_load_countries' %}" required></select>
+                                                <input type="hidden" id="selected_country" name="selected_country" value="{{ selected_country }}">
+                                            </div>
+                                        </div>
+                                        <div><hr></div>
+                                        <!-- Địa chỉ-->
+                                        <div class="row">
+                                            <input type="hidden" id="count_address" name="count_address" />
+                                            {% for emp_addr in address %}
+                                                <div class="col col-sm-2">
+                                                    <label for="{{ emp_addr.id }}" class="form-control-sm">Địa chỉ {{ emp_addr.row }}</label>
+                                                </div>
+                                                <div class="col col-sm-1">
+                                                    <button class="btn btn-primary btn-sm add_address" tabindex="-1"><i class='fas fa-plus'></i></button>
+                                                    <button class="btn btn-danger btn-sm del_address" tabindex="-1" ><i class='fas fa-minus'></i></button>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <input class="input-sm form-control-sm form-control address" name="{{ emp_addr.name }}" id="{{ emp_addr.id }}"
+                                                           type="text" value="{{ emp_addr.address }}" required>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <!-- Gạch ngang -->
+                                        <div><hr></div>
+                                        <!-- Số điện thoại -->
+                                        <div class="row">
+                                            <input type="hidden" id="count_phone" name="count_phone">
+                                            {% for ep in phone_number %}
+                                                <div class="col col-sm-2">
+                                                    <label for="{{ ep.id }}" class="form-control-sm">Số điện thoại {{ ep.row }}</label>
+                                                </div>
+                                                <div class="col-6 col-sm-1">
+                                                    <button class="btn btn-primary btn-sm add_phone" tabindex="-1"><i class='fas fa-plus'></i></button>
+                                                    <button class="btn btn-danger btn-sm del_phone" tabindex="-1"><i class='fas fa-minus'></i></button>
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <input class="input-sm form-control-sm form-control phone_number"
+                                                           name="{{ ep.name }}" id="{{ ep.id }}"
+                                                           type="text" value="{{ep.phone_number}}" required>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <!-- Gạch ngang -->
+                                        <div><hr></div>
+                                        <!-- Email -->
+                                        <div class="row">
+                                            <input type="hidden" id="count_email" name="count_email">
+                                            {% for ee in emp_email %}
+                                                <div class="col col-sm-2">
+                                                    <label for="{{ ee.id }}" class="form-control-sm">Email {{ee.row}}</label>
+                                                </div>
+                                                <div class="col-6 col-sm-1">
+                                                    <button class="btn btn-primary btn-sm add_email" tabindex="-1"><i class="fas fa-plus"></i></button>
+                                                    <button class="btn btn-danger btn-sm del_email" tabindex="-1"><i class="fas fa-minus"></i></button>
+                                                </div>
+                                                <div class="col-6 col-sm-3">
+                                                    <input class="input-sm form-control-sm form-control emp_email" name="{{ ee.name }}" id="{{ ee.id }}"
+                                                           type="text" value="{{ ee.emp_email }}" required>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <div><hr></div>
+
+                                        <!-- Tài khoản ngân hàng -->
+                                        <div>
+                                        {% for em_acc in account_number %}
+                                            <div class="row">
+                                                <input type="hidden" id="count_account_number" name="count_account_number">
+                                                    <div class="col col-sm-2">
+                                                        <label for="{{ em_acc.an_id }}" class="form-control-sm">Số tài khoản {{ em_acc.row }}</label>
+                                                    </div>
+                                                    <div class="col-6 col-sm-1">
+                                                        <button class="btn btn-primary btn-sm add_account_number" tabindex="-1"><i class='fas fa-plus'></i></button>
+                                                        <button class="btn btn-danger btn-sm del_account_number" tabindex="-1"><i class='fas fa-minus'></i></button>
+                                                    </div>
+                                                    <div class="col-6 col-sm-3">
+                                                        <input class="input-sm form-control-sm form-control account_number" name="{{em_acc.an_name}}"
+                                                               id="{{ em_acc.an_id }}" type="text" required
+                                                               value="{{ em_acc.account_number }}">
+                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="{{ em_acc.bn_id }}" class="form-control-sm">Ngân hàng</label>
+                                                </div>
+                                                <div class="col-6 col-sm-1"></div>
+                                                <div class="col col-sm-4">
+                                                    <input class="input-sm form-control-sm form-control bank_name"
+                                                           name="{{ em_acc.bn_name }}" id="{{ em_acc.bn_id }}" type="text"
+                                                           required value="{{ em_acc.bank_name }}">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-sm-2">
+                                                    <label for="{{ em_acc.ba_id }}" class="form-control-sm">Địa chỉ ngân hàng</label>
+                                                </div>
+                                                <div class="col-6 col-sm-1"></div>
+                                                <div class="col col-sm-4">
+                                                    <input class="input-sm form-control-sm form-control bank_address"
+                                                           name="{{ em_acc.ba_name }}" id="{{ em_acc.ba_id }}" type="text"
+                                                           value="{{ em_acc.bank_address }}">
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                        <div><hr></div>
+                                        <!-- Công ty -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="company" class="form-control-sm">Công ty</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col col-sm-3">
+                                                <select class="form-control-sm form-control company" name="company" id="company" required></select>
+                                                <input type="hidden" id="selected_company" name="selected_company" value="{{ selected_company }}">
+                                            </div>
+                                        </div>
+                                        <!-- Phòng ban -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="dept" class="form-control-sm">Phòng/Ban/TT</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col col-sm-3">
+                                                <select class="form-control-sm form-control dept" name="dept" id="dept" required></select>
+                                                <input id="selected_dept" name="selected_dept" value="{{ selected_dept }}" type="hidden">
+                                            </div>
+                                        </div>
+                                        <!-- Bộ phận thuộc phòng -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="subdept" class="form-control-sm">Bộ phận</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col col-sm-3">
+                                                <select class="form-control-sm form-control subdept" name="subdept" id="subdept"></select>
+                                                <input id="selected_subdept" name="selected_subdept" value="{{ selected_subdept }}" type="hidden">
+                                            </div>
+                                        </div>
+                                        <!-- Chức danh -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="position_id" class="form-control-sm">Chức danh</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col col-sm-4">
+                                                <input class="input-sm form-control-sm form-control position_id" name="position_id"
+                                                       id="position_id" type="text" required
+                                                       value="{{ position_id }}">
+                                            </div>
+                                        </div>
+                                        <!-- Ngày bắt đầu chức danh -->
+                                        <div class="row">
+                                            <div class="col col-sm-2">
+                                                <label for="startday" class="form-control-sm">Từ ngày</label>
+                                            </div>
+                                            <div class="col-6 col-sm-1"></div>
+                                            <div class="col col-sm-2">
+                                                <input class="input-sm form-control-sm form-control date" name="startday" id="startday"
+                                                       type="date" value="{{ startday }}" required>
+                                            </div>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--Input text ẩn = 'save' thì #save click, = 'try' thì #test_save click kiểm tra trong view.py-->
+                                        <label for="flag_test" hidden></label>
+                                        <input type="text" id="flag_test" name="flag_test" value="save" hidden>
+
+                                        <!--Input text ẩn = 'text_unchanged' thì input không thay đổi
+                                           = 'text_changed' thì input có thay đổi để kiểm tra trong view.py-->
+                                        <label for="text_changed" hidden></label>
+                                        <input type="text" id="text_changed" name="text_changed" value="text_unchanged" hidden>
+
+                                        <!--<input class="input-sm form-control-sm form-control  demo" id="demo" name="demo" hidden>-->
+                                        <script>
+                                            //let s = document.getElementsByName("complist").value;
+                                            //alert('sdfkjshdfkj');
+                                            /*$('#demo').inputpicker({
+                                                url: '/static/multi-column/example-regions.json',
+                                                fields: ['id', 'name'],
+                                                fieldText: 'name',
+                                                fieldValue: 'id',
+                                                headShow: true,
+                                                filterOpen: true,
+                                                autoOpen: true,
+                                                width: "100%"
+                                            });*/
+                                            /*let s = document.getElementById('complist').value;
+                                            alert(s);
+                                            $('#demo').inputpicker({
+                                                'data': [
+            {company_id:"1",company_name:"jQuery", company_short_name: "This is the description of the text 1."},
+            {company_id:"2",company_name:"Script", company_short_name: "This is the description of the text 2."},
+            {company_id:"3",company_name:"Net", company_short_name: "This is the description of the text 3."},
+            {company_id: "1000", company_name: 'Công ty TNHH MTV GPM Việt Nam', company_short_name: 'GPM Việt Nam'},
+            {company_id: '1001', company_name: 'Ngân hàng TMCP Quốc Dân chi nhánh An Giang', company_short_name: 'NCB An Giang'}],
+                                                fields:[
+                                                    {name:'company_id',text:'company_id'},
+                                                    {name:'company_name',text:'company_name'},
+                                                    {name:'company_short_name',text:'company_short_name'}],
+                                                headShow: true,
+                                                fieldText : 'company_id',
+                                                fieldValue: 'company_id',
+                                                filterOpen: true,
+                                                autoOpen: true,
+                                                width: "100%"
+                                            })*/
+                                            //let s = document.getElementById('demo').value;
+                                            let obj = JSON.parse('{{ data | safe}}');
+                                            //alert(obj);
+                                            //console.log(obj);
+
+                                            $('#demo').inputpicker({
+                                                data: obj,
+                                                fields: [
+                                                    {name: 'company_id', text: 'company_id'},
+                                                    {name: 'company_name', text: 'company_name'},
+                                                    {name: 'company_short_name', text: 'company_short_name'},
+                                                    {name: 'cert_day', text: 'cert_day'}],
+                                                headShow: true,
+                                                fieldText: 'company_id',
+                                                fieldValue: 'company_id',
+                                                filterOpen: true,
+                                                autoOpen: true,
+                                                width: "100%"
+                                            });
+                                            </script>
+                                        {% csrf_token %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" hidden>
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2019 GPM Việt Nam. All rights reserved <a href="https://gpm.vn">GPM</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+{% include "hrms/footer_bar.html" %}
+</html>

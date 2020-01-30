@@ -1,0 +1,8 @@
+<option value="">Chọn...</option>
+{% for g in currency %}
+    {% if g.currency_id == selected_currency %}
+        <option value="{{ g.currency_id }}" selected>{{ g.currency_name }}</option>
+    {% else %}
+        <option value="{{ g.currency_id }}">{{ g.currency_name }}</option>
+    {% endif %}
+{% endfor %}
